@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>BC Incentive Chart</title>
+
+  <style>
+	div.middle {
+		width:500px;
+    	font-family: "Arial";
+	}
+	div.left {
+		width:40%;
+    	text-align:left;
+    	float:left;
+    	padding:5px;
+	}
+	div.right {
+		width:50%;
+    	text-align:left;
+    	float:left;
+    	padding:5px;
+	}
+
+	h1, p {
+		font-family: "Arial";
+	}
+
+	p.error, ul.errorlist li {
+		color:red;
+		font-weight:bold;
+	}
+
+	ul.errorlist li {
+		list-style-type: none;
+		margin-left: -40px;
+		margin-top: -10px;
+		margin-bottom: -10px;
+		font-size: 10px;
+	}
+  </style>
+  <script src="/static/fca_cows.js"></script>
+
+</head>
+
+<body>
+
+<h1>Create new record</h1>
+
+<form action="/cowsform/" method="post">
+{% csrf_token %}
+
+{% if error %}
+	<p class="error">
+		{{ error }}
+	</p>
+{% endif %}
+
+{% if form.errors %}
+	<p class="error">
+	{% if form.errors.items|length == 1 %}
+		Please correct the error below.
+	{% else %}
+		Please correct the errors below.
+	{% endif %}
+	</p>
+{% endif %}
+
+<div class="middle">
+	<div class="left">Business Center*:</div>
+	<div class="right">
+    	<select name="business_center" id="business_center" onChange="changeBC(this.value);">
+        	<option selected="selected"></option>
+        	<option value="CBC">CBC</option>
+        	<option value="DBC">DBC</option>
+        	<option value="GLBC">GLBC</option>
+        	<option value="MABC">MABC</option>
+        	<option value="MWBC">MWBC</option>
+        	<option value="NEBC">NEBC</option>
+        	<option value="SEBC">SEBC</option>
+        	<option value="SWBC">SWBC</option>
+        	<option value="WBC">WBC</option>
+    	</select>
+    	<p class="error">{{ form.business_center.errors }}</p>
+	</div>
+</div>
+
+<div class="middle">
+	<div class="left">Month*:</div>
+	<div class="right">
+    	<select name="month" id="month">
+        	<option selected="selected"></option>
+        	<option value="JANUARY">JANUARY</option>
+        	<option value="FEBRUARY">FEBRUARY</option>
+        	<option value="MARCH">MARCH</option>
+        	<option value="APRIL">APRIL</option>
+        	<option value="MAY">MAY</option>
+        	<option value="JUNE">JUNE</option>
+        	<option value="JULY">JULY</option>
+        	<option value="AUGUST">AUGUST</option>
+        	<option value="SEPTEMBER">SEPTEMBER</option>
+        	<option value="OCTOBER">OCTOBER</option>
+        	<option value="NOVEMBER">NOVEMBER</option>
+        	<option value="DECEMBER">DECEMBER</option>
+    	</select>
+    	<p class="error">{{ form.month.errors }}</p>
+	</div>
+</div>
+
+<div style="clear:both; padding:10px;"></div>
+
+<div class="middle">
+	<div class="left">States:</div>
+	<div class="right">
+	    <select name="states" id="states" multiple style="width:200px; height:100px;">
+       		<option></option>
+    	</select>
+	</div>
+</div>
+
+<div style="clear:both;"></div>
+
+<div class="middle">
+	<b>OR</b>
+</div>
+
+<div style="clear:both;"></div>
+
+<div class="middle">
+	<div class="left">Zip Codes:</div>
+	<div class="right">
+        <select name="zip_codes" id="zip_codes" multiple style="width:200px; height:100px;">
+       		<option></option>
+    	</select>
+	</div>
+</div>
+
+<div style="clear:both;"></div>
+
+<div class="middle">
+	<b>OR</b>
+</div>
+
+<div style="clear:both;"></div>
+
+<div class="middle">
+	<div class="left">DMA:</div>
+	<div class="right">
+    	<select name="dma" id="dma" multiple style="width:200px; height:100px;">
+       		<option></option>
+    	</select>
+	</div>
+</div>
+
+<div class="middle">
+	<div class="left">Model Year*:</div>
+	<div class="right">
+		<input type="text" name="car_year" placeholder="e.g. 2018" size="25" />
+		<p class="error">{{ form.car_year.errors }}</p>
+	</div>
+</div>
+
+<script language="javascript">
+{% autoescape off %}
+var makeByModel = {{ carMake }}
+
+var makeByModelActive = {{ carMakeActive }}
+{% endautoescape %}
+</script>
+
+<div class="middle">
+	<div class="left">Model*:</div>
+	<div class="right">
+		<select name="car_model" id="car_model" onChange="changeMake(this.value);">
+    		<option selected="selected"></option>
+    		{% for model in carModel %}
+    		<option value="{{ model.value }}" {% if not model.active %}disabled{% endif %}>{{ model.name }}</option>
+			{% endfor %}
+		</select>
+		<p class="error">{{ form.car_model.errors }}</p>
+    </div>
+</div>
+
+<div class="middle">
+	<div class="left">Make*:</div>
+	<div class="right">
+    	<select name="car_make" id="car_make">
+       		<option selected="selected"></option>
+    	</select>
+    	<p class="error">{{ form.car_make.errors }}</p>
+    </div>
+</div>
+
+<div id="ram_select" style="display:none;">
+	<div class="middle">
+		<div class="left">Box Size:</div>
+		<div class="right">
+	    	<input type="text" name="box_size" />
+	    </div>
+	</div>
+
+	<div class="middle">
+		<div class="left">Wheel Base:</div>
+		<div class="right">
+	    	<input type="text" name="wheel_base" />
+	    </div>
+	</div>
+</div>
+
+<div class="middle">
+	<div class="left">Trim:</div>
+	<div class="right"><input type="text" name="car_trim" placeholder="e.g. Trim details" size="25" /></div>
+</div>
+
+<div style="clear:both; padding:10px;"></div>
+
+<div class="middle">
+	<div class="left">Select Offer:</div>
+	<div class="right">
+    	<select name="select_offer" id="select_offer" onChange="showOffer(this.value);">
+        	<option selected="selected"></option>
+        	<option value="co_select">Cash Offer</option>
+        	<option value="fo_select">Finance Offer</option>
+        	<option value="ccfo_select">Combo "Cash or Finance" Offer</option>
+        	<option value="lo_select">Lease Offer</option>
+        	<option value="tca_select">Total Cash Allowance-Offer</option>
+        	<option value="tv_select">Total Values-Offer</option>
+    	</select>
+	</div>
+</div>
+
+<div style="clear:both; padding:10px;"></div>
+
+
+<div id="co_select" style="display:none;">
+	<div class="middle">
+		<div><b>Cash Offer</b></div>
+	</div>
+
+	<div class="middle">
+		<div class="left">Program ID:</div>
+		<div class="right">
+	    	<input type="text" name="co_program_id" />
+		</div>
+	</div>
+
+	<div class="middle">
+		<div class="left">Customer Cash:</div>
+		<div class="right"><input type="text" name="co_customer_cash" /></div>
+		<div class="left">BC Bonus Cash:</div>
+		<div class="right"><input type="text" name="co_bc_bonus_cash" /></div>
+		<div class="left">Auto Show Bonus Cash:</div>
+		<div class="right"><input type="text" name="co_auto_show_bonus_cash" /></div>
+	</div>
+</div>
+
+<div id="fo_select" style="display:none;">
+	<div class="middle">
+		<div><b>Finance Offer</b></div>
+	</div>
+
+	<div class="middle">
+		<div class="left">Program ID:</div>
+		<div class="right">
+	    	<input type="text" name="fo_program_id" />
+		</div>
+	</div>
+
+	<div class="middle">
+		<div class="left">APR and Term:</div>
+		<div class="right"><input type="text" name="fo_apr_and_term" /></div>
+		<div class="left">BC Bonus Cash:</div>
+		<div class="right"><input type="text" name="fo_bc_bonus_cash" /></div>
+		<div class="left">Auto Show Bonus Cash:</div>
+		<div class="right"><input type="text" name="fo_auto_show_bonus_cash" /></div>
+	</div>
+</div>
+
+<div id="ccfo_select" style="display:none;">
+	<div class="middle">
+		<div><b>Combo "Cash or Finance" Offer</b></div>
+	</div>
+
+	<div class="middle">
+		<div class="left">Program ID:</div>
+		<div class="right">
+	    	<input type="text" name="ccfo_program_id" />
+		</div>
+	</div>
+
+	<div class="middle">
+		<div class="left">Customer Cash:</div>
+		<div class="right"><input type="text" name="ccfo_customer_cash" /></div>
+		<div class="left">BC Bonus Cash:</div>
+		<div class="right"><input type="text" name="ccfo_cc_bc_bonus_cash"/ ></div>
+	</div>
+
+	<div style="clear:both;"></div>
+
+	<div class="middle">
+		<b>OR</b>
+	</div>
+
+	<div style="clear:both;"></div>
+
+	<div class="middle">
+		<div class="left">APR and Term:</div>
+		<div class="right"><input type="text" name="ccfo_apr_and_term" /></div>
+		<div class="left">BC Bonus Cash:</div>
+		<div class="right"><input type="text" name="ccfo_aat_bc_bonus_cash" /></div>
+	</div>
+</div>
+
+<div id="lo_select" style="display:none;">
+	<div class="middle">
+		<div><b>Lease Offer</b></div>
+	</div>
+
+	<div class="middle">
+		<div class="left">Program ID:</div>
+		<div class="right">
+	    	<input type="text" name="lo_program_id" />
+		</div>
+	</div>
+
+	<div class="middle">
+		<div class="left">Lease Payment:</div>
+		<div class="right"><input type="text" name="lo_lease_payment" /></div>
+		<div class="left">Term:</div>
+		<div class="right"><input type="text" name="lo_term" /></div>
+		<div class="left">Due at Signing:</div>
+		<div class="right"><input type="text" name="lo_due_at_signing" /></div>
+	</div>
+</div>
+
+<div id="tca_select" style="display:none;">
+	<div class="middle">
+		<div><b>Total Cash Allowance-Offer must match Offer Details Section</b></div>
+	</div>
+
+	<div class="middle">
+		<div class="left">Program ID:</div>
+		<div class="right">
+	    	<input type="text" name="tca_program_id" />
+		</div>
+	</div>
+
+	<div class="middle">
+		<div class="left">Total Cash Allowance:</div>
+		<div class="right"><input type="text" name="total_cash_allowance" /></div>
+	</div>
+</div>
+
+<div id="tv_select" style="display:none;">
+	<div class="middle">
+		<div><b>Total Values-Offer must match Offer Details Section</b></div>
+	</div>
+
+	<div class="middle">
+		<div class="left">Program ID:</div>
+		<div class="right">
+	    	<input type="text" name="tv_program_id" />
+		</div>
+	</div>
+
+	<div class="middle">
+		<div class="left">Total Values:</div>
+		<div class="right"><input type="text" name="total_values" /></div>
+	</div>
+</div>
+
+<div style="clear:both; padding:10px;"></div>
+
+<div class="middle">
+    <input type="submit" value="Submit" />
+</div>
+
+</form>
+
+</body>
+</html>

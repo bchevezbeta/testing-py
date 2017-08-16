@@ -1,0 +1,47 @@
+[
+{
+  "model": "cowsform.carmodel",
+  "pk": 1,
+  "fields": {
+    "name": "CHRYSLER",
+    "value": "CHRYSLER",
+    "active": true
+  }
+},
+{
+  "model": "cowsform.carmodel",
+  "pk": 2,
+  "fields": {
+    "name": "DODGE",
+    "value": "DODGE",
+    "active": true
+  }
+},
+{
+  "model": "cowsform.carmodel",
+  "pk": 3,
+  "fields": {
+    "name": "JEEP",
+    "value": "JEEP",
+    "active": true
+  }
+},
+{
+  "model": "cowsform.carmodel",
+  "pk": 4,
+  "fields": {
+    "name": "RAM",
+    "value": "RAM",
+    "active": true
+  }
+},
+{
+  "model": "cowsform.carmodel",
+  "pk": 5,
+  "fields": {
+    "name": "FIAT",
+    "value": "FIAT",
+    "active": true
+  }
+}
+]

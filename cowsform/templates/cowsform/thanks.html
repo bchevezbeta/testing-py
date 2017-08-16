@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>BC Incentive Chart</title>
+
+  <style>
+	div.middle {
+		width:600px;
+    	font-family: "Arial";
+	}
+	div.left {
+		width:30%;
+    	text-align:left;
+    	float:left;
+    	padding:5px;
+	}
+	div.right {
+		width:65%;
+    	text-align:left;
+    	float:left;
+    	padding:5px;
+	}
+	h1, p {
+		font-family: "Arial";
+	}
+  </style>
+
+</head>
+
+<body>
+
+{% if form and npi %} 
+
+<h1>New record created</h1>
+
+<div class="middle">
+	<a href="/admin/cowsform/nameplate/{{npi.id}}/change/">Review record</a>
+</div>
+
+<div style="clear:both; padding:10px;"></div>
+
+<div class="middle">
+	<div class="left">Subject Name:</div>
+	<div class="right">
+    	{{ npi.subject_name }}
+	</div>
+</div>
+
+<div class="middle">
+	<div class="left">Month:</div>
+	<div class="right">
+    	{{ form.month.value }}
+	</div>
+</div>
+
+<div class="middle">
+	<div class="left">Business Center:</div>
+	<div class="right">
+    	{{ form.business_center.value }}
+	</div>
+</div>
+
+{% if form.states.value %}
+<div class="middle">
+	<div class="left">States:</div>
+	<div class="right">
+	    {{ form.states.value }}
+	</div>
+</div>
+{% endif %}
+
+{% if form.zip_codes.value %}
+<div class="middle">
+	<div class="left">Zip Codes:</div>
+	<div class="right">
+        {{ form.zip_codes.value }}
+	</div>
+</div>
+{% endif %}
+
+{% if form.dma.value %}
+<div class="middle">
+	<div class="left">DMA:</div>
+	<div class="right">
+    	{{ form.dma.value }}
+	</div>
+</div>
+{% endif %}
+
+{% if form.car_model.value %}
+<div class="middle">
+	<div class="left">Model:</div>
+	<div class="right">
+		{{ form.car_model.value }}
+    </div>
+</div>
+{% endif %}
+
+{% if form.car_make.value %}
+<div class="middle">
+	<div class="left">Make:</div>
+	<div class="right">
+    	{{ form.car_make.value }}
+    </div>
+</div>
+{% endif %}
+
+{% if form.box_size.value %}
+<div class="middle">
+	<div class="left">Box Size:</div>
+	<div class="right">
+    	{{ form.box_size.value }}
+    </div>
+</div>
+{% endif %}
+
+{% if form.wheel_base.value %}
+<div class="middle">
+	<div class="left">Wheel Base:</div>
+	<div class="right">
+    	{{ form.wheel_base.value }}
+    </div>
+</div>
+{% endif %}
+
+{% if form.car_trim.value %}
+<div class="middle">
+	<div class="left">Trim:</div>
+	<div class="right">{{ form.car_trim.value }}</div>
+</div>
+{% endif %}
+
+{% if form.car_year.value %}
+<div class="middle">
+	<div class="left">Model Year:</div>
+	<div class="right">{{ form.car_year.value }}</div>
+</div>
+{% endif %}
+
+{% if form.co_program_id.value and form.co_customer_cash.value and form.co_bc_bonus_cash.value and form.co_auto_show_bonus_cash.value %}
+<div class="middle">
+	<div><b>Cash Offer</b></div>
+</div>
+
+<div class="middle">
+	<div class="left">Program ID:</div>
+	<div class="right">
+    	{{ form.co_program_id.value }}
+	</div>
+</div>
+
+<div class="middle">
+	<div class="left">Customer Cash:</div>
+	<div class="right">{{ form.co_customer_cash.value }}</div>
+	<div class="left">BC Bonus Cash:</div>
+	<div class="right">{{ form.co_bc_bonus_cash.value }}</div>
+	<div class="left">Auto Show Bonus Cash:</div>
+	<div class="right">{{ form.co_auto_show_bonus_cash.value }}</div>
+</div>
+{% endif %}
+
+{% if form.fo_program_id.value and form.fo_apr_and_term.value and form.fo_bc_bonus_cash.value and form.fo_auto_show_bonus_cash.value %}
+<div class="middle">
+	<div><b>Finance Offer</b></div>
+</div>
+
+<div class="middle">
+	<div class="left">Program ID:</div>
+	<div class="right">
+    	{{ form.fo_program_id.value }}
+	</div>
+</div>
+
+<div class="middle">
+	<div class="left">APR and Term:</div>
+	<div class="right">{{ form.fo_apr_and_term.value }}</div>
+	<div class="left">BC Bonus Cash:</div>
+	<div class="right">{{ form.fo_bc_bonus_cash.value }}</div>
+	<div class="left">Auto Show Bonus Cash:</div>
+	<div class="right">{{ form.fo_auto_show_bonus_cash.value }}</div>
+</div>
+{% endif %}
+
+{% if form.ccfo_program_id.value %}
+<div class="middle">
+	<div><b>Combo "Cash or Finance" Offer</b></div>
+</div>
+
+<div class="middle">
+	<div class="left">Program ID:</div>
+	<div class="right">
+    	{{ form.ccfo_program_id.value }}
+	</div>
+</div>
+{% endif %}
+
+{% if form.ccfo_customer_cash.value and form.ccfo_cc_bc_bonus_cash.value %}
+<div class="middle">
+	<div class="left">Customer Cash:</div>
+	<div class="right">{{ form.ccfo_customer_cash.value }}</div>
+	<div class="left">BC Bonus Cash:</div>
+	<div class="right">{{ form.ccfo_cc_bc_bonus_cash.value }}</div>
+</div>
+{% endif %}
+
+{% if form.ccfo_apr_and_term.value and form.ccfo_aat_bc_bonus_cash.value %}
+<div class="middle">
+	<div class="left">APR and Term:</div>
+	<div class="right">{{ form.ccfo_apr_and_term.value }}</div>
+	<div class="left">BC Bonus Cash:</div>
+	<div class="right">{{ form.ccfo_aat_bc_bonus_cash.value }}</div>
+</div>
+{% endif %}
+
+{% if form.lo_program_id.value and form.lo_lease_payment.value and form.lo_term.value and form.lo_due_at_signing.value %}
+<div class="middle">
+	<div><b>Lease Offer</b></div>
+</div>
+
+<div class="middle">
+	<div class="left">Program ID:</div>
+	<div class="right">
+    	{{ form.lo_program_id.value }}
+	</div>
+</div>
+
+<div class="middle">
+	<div class="left">Lease Payment:</div>
+	<div class="right">{{ form.lo_lease_payment.value }}</div>
+	<div class="left">Term:</div>
+	<div class="right">{{ form.lo_term.value }}</div>
+	<div class="left">Due at Signing:</div>
+	<div class="right">{{ form.lo_due_at_signing.value }}</div>
+</div>
+{% endif %}
+
+{% if form.tca_program_id.value and form.total_cash_allowance.value %}
+<div class="middle">
+	<div><b>Total Cash Allowance-Offer must match Offer Details Section</b></div>
+</div>
+
+<div class="middle">
+	<div class="left">Program ID:</div>
+	<div class="right">
+    	{{ form.tca_program_id.value }}
+	</div>
+</div>
+{% endif %}
+
+{% if form.tv_program_id.value and form.total_values.value %}
+<div class="middle">
+	<div class="left">Total Cash Allowance:</div>
+	<div class="right">{{ form.total_cash_allowance.value }}</div>
+</div>
+
+<div style="clear:both; padding:25px;"></div>
+
+<div class="middle">
+	<div><b>Total Values-Offer must match Offer Details Section</b></div>
+</div>
+
+<div class="middle">
+	<div class="left">Program ID:</div>
+	<div class="right">
+    	{{ form.tv_program_id.value }}
+	</div>
+</div>
+
+
+<div class="middle">
+	<div class="left">Total Values:</div>
+	<div class="right">{{ form.total_values.value }}</div>
+</div>
+{% endif %}
+
+{% endif %}
+
+</body>
+</html>
