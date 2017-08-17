@@ -31,6 +31,7 @@ def index(request):
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
         form = NamePlateForm(request.POST)
+
         # check whether it's valid:
         if form.is_valid():
             try:
@@ -96,6 +97,10 @@ def index(request):
             # redirect to a new URL:
             print NamePlateInst.id
             return render(request, 'cowsform/thanks.html', {'form': form, 'npi': NamePlateInst})
+
+        else:
+            return render(request, 'cowsform/form.html', {'form': form, 'carModel': CarModel.objects.all(), 'carMake': cMakeList, 'carMakeActive': cMakeListActive})
+
 
     # if a GET (or any other method) we'll create a blank form
     else:
