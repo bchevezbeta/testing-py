@@ -1,12 +1,272 @@
-<h1>{{ question.question_text }}</h1>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>BC Incentive Chart</title>
+
+  <style>
+	div.middle {
+		width:600px;
+    	font-family: "Arial";
+	}
+	div.left {
+		width:30%;
+    	text-align:left;
+    	float:left;
+    	padding:5px;
+	}
+	div.right {
+		width:65%;
+    	text-align:left;
+    	float:left;
+    	padding:5px;
+	}
+	h1, p {
+		font-family: "Arial";
+	}
+  </style>
+
+</head>
+
+<body>
+
+<h1>{{ nameplate.subject_name }}</h1>
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-<form action="{% url 'cowsform:vote' question.id %}" method="post">
-{% csrf_token %}
-{% for choice in question.choice_set.all %}
-    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
-    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br />
-{% endfor %}
-<input type="submit" value="Vote" />
-</form>
+<div class="middle">
+	<a href="/cowsform/list/">Return to record list</a>
+</div>
+
+<div style="clear:both; padding:10px;"></div>
+
+<div class="middle">
+	<div class="left">Month:</div>
+	<div class="right">
+    	{{ nameplate.month }}
+	</div>
+</div>
+
+<div class="middle">
+	<div class="left">Business Center:</div>
+	<div class="right">
+    	{{ nameplate.business_center }}
+	</div>
+</div>
+
+{% if nameplate.states and nameplate.states != "[]" %}
+<div class="middle">
+	<div class="left">States:</div>
+	<div class="right">
+	    {{ nameplate.states }}
+	</div>
+</div>
+{% endif %}
+
+{% if nameplate.zip_codes and nameplate.zip_codes != "[]" %}
+<div class="middle">
+	<div class="left">Zip Codes:</div>
+	<div class="right">
+        {{ nameplate.zip_codes }}
+	</div>
+</div>
+{% endif %}
+
+{% if nameplate.dma and nameplate.dma != "[]" %}
+<div class="middle">
+	<div class="left">DMA:</div>
+	<div class="right">
+    	{{ nameplate.dma }}
+	</div>
+</div>
+{% endif %}
+
+{% if nameplate.car_model %}
+<div class="middle">
+	<div class="left">Model:</div>
+	<div class="right">
+		{{ nameplate.car_model }}
+    </div>
+</div>
+{% endif %}
+
+{% if nameplate.car_make %}
+<div class="middle">
+	<div class="left">Make:</div>
+	<div class="right">
+    	{{ nameplate.car_make }}
+    </div>
+</div>
+{% endif %}
+
+{% if nameplate.box_size %}
+<div class="middle">
+	<div class="left">Box Size:</div>
+	<div class="right">
+    	{{ nameplate.box_size }}
+    </div>
+</div>
+{% endif %}
+
+{% if nameplate.wheel_base %}
+<div class="middle">
+	<div class="left">Wheel Base:</div>
+	<div class="right">
+    	{{ nameplate.wheel_base }}
+    </div>
+</div>
+{% endif %}
+
+{% if nameplate.car_trim %}
+<div class="middle">
+	<div class="left">Trim:</div>
+	<div class="right">{{ nameplate.car_trim }}</div>
+</div>
+{% endif %}
+
+{% if nameplate.car_year %}
+<div class="middle">
+	<div class="left">Model Year:</div>
+	<div class="right">{{ nameplate.car_year }}</div>
+</div>
+{% endif %}
+
+{% if nameplate.co_program_id and nameplate.co_customer_cash and nameplate.co_bc_bonus_cash and nameplate.co_auto_show_bonus_cash %}
+<div class="middle">
+	<div><b>Cash Offer</b></div>
+</div>
+
+<div class="middle">
+	<div class="left">Program ID:</div>
+	<div class="right">
+    	{{ nameplate.co_program_id }}
+	</div>
+</div>
+
+<div class="middle">
+	<div class="left">Customer Cash:</div>
+	<div class="right">{{ nameplate.co_customer_cash }}</div>
+	<div class="left">BC Bonus Cash:</div>
+	<div class="right">{{ nameplate.co_bc_bonus_cash }}</div>
+	<div class="left">Auto Show Bonus Cash:</div>
+	<div class="right">{{ nameplate.co_auto_show_bonus_cash }}</div>
+</div>
+{% endif %}
+
+{% if nameplate.fo_program_id and nameplate.fo_apr_and_term and nameplate.fo_bc_bonus_cash and nameplate.fo_auto_show_bonus_cash %}
+<div class="middle">
+	<div><b>Finance Offer</b></div>
+</div>
+
+<div class="middle">
+	<div class="left">Program ID:</div>
+	<div class="right">
+    	{{ nameplate.fo_program_id }}
+	</div>
+</div>
+
+<div class="middle">
+	<div class="left">APR and Term:</div>
+	<div class="right">{{ nameplate.fo_apr_and_term }}</div>
+	<div class="left">BC Bonus Cash:</div>
+	<div class="right">{{ nameplate.fo_bc_bonus_cash }}</div>
+	<div class="left">Auto Show Bonus Cash:</div>
+	<div class="right">{{ nameplate.fo_auto_show_bonus_cash }}</div>
+</div>
+{% endif %}
+
+{% if nameplate.ccfo_program_id %}
+<div class="middle">
+	<div><b>Combo "Cash or Finance" Offer</b></div>
+</div>
+
+<div class="middle">
+	<div class="left">Program ID:</div>
+	<div class="right">
+    	{{ nameplate.ccfo_program_id }}
+	</div>
+</div>
+{% endif %}
+
+{% if nameplate.ccfo_customer_cash and nameplate.ccfo_cc_bc_bonus_cash %}
+<div class="middle">
+	<div class="left">Customer Cash:</div>
+	<div class="right">{{ nameplate.ccfo_customer_cash }}</div>
+	<div class="left">BC Bonus Cash:</div>
+	<div class="right">{{ nameplate.ccfo_cc_bc_bonus_cash }}</div>
+</div>
+{% endif %}
+
+{% if nameplate.ccfo_apr_and_term and nameplate.ccfo_aat_bc_bonus_cash %}
+<div class="middle">
+	<div class="left">APR and Term:</div>
+	<div class="right">{{ nameplate.ccfo_apr_and_term }}</div>
+	<div class="left">BC Bonus Cash:</div>
+	<div class="right">{{ nameplate.ccfo_aat_bc_bonus_cash }}</div>
+</div>
+{% endif %}
+
+{% if nameplate.lo_program_id and nameplate.lo_lease_payment and nameplate.lo_term and nameplate.lo_due_at_signing %}
+<div class="middle">
+	<div><b>Lease Offer</b></div>
+</div>
+
+<div class="middle">
+	<div class="left">Program ID:</div>
+	<div class="right">
+    	{{ nameplate.lo_program_id }}
+	</div>
+</div>
+
+<div class="middle">
+	<div class="left">Lease Payment:</div>
+	<div class="right">{{ nameplate.lo_lease_payment }}</div>
+	<div class="left">Term:</div>
+	<div class="right">{{ nameplate.lo_term }}</div>
+	<div class="left">Due at Signing:</div>
+	<div class="right">{{ nameplate.lo_due_at_signing }}</div>
+</div>
+{% endif %}
+
+{% if nameplate.tca_program_id and nameplate.total_cash_allowance %}
+<div class="middle">
+	<div><b>Total Cash Allowance-Offer must match Offer Details Section</b></div>
+</div>
+
+<div class="middle">
+	<div class="left">Program ID:</div>
+	<div class="right">
+    	{{ nameplate.tca_program_id }}
+	</div>
+</div>
+{% endif %}
+
+{% if nameplate.tv_program_id and nameplate.total_values %}
+<div class="middle">
+	<div class="left">Total Cash Allowance:</div>
+	<div class="right">{{ nameplate.total_cash_allowance }}</div>
+</div>
+
+<div style="clear:both; padding:25px;"></div>
+
+<div class="middle">
+	<div><b>Total Values-Offer must match Offer Details Section</b></div>
+</div>
+
+<div class="middle">
+	<div class="left">Program ID:</div>
+	<div class="right">
+    	{{ nameplate.tv_program_id }}
+	</div>
+</div>
+
+
+<div class="middle">
+	<div class="left">Total Values:</div>
+	<div class="right">{{ nameplate.total_values }}</div>
+</div>
+{% endif %}
+
+</body>
+</html>

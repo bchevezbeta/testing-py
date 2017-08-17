@@ -1,4 +1,4 @@
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, Http404
 from django.shortcuts import get_object_or_404, render
 from django.db import IntegrityError
 from django.core.mail import send_mail
@@ -108,5 +108,13 @@ def index(request):
         form = NamePlateForm()
         return render(request, 'cowsform/form.html', {'form': form, 'carModel': CarModel.objects.all(), 'carMake': cMakeList, 'carMakeActive': cMakeListActive})
 
-def thanks(request):
-    return render(request, 'cowsform/thanks.html')
+def ListView(request):
+    npList= NamePlate.objects.order_by('-pub_date')
+    return render(request, 'cowsform/list.html', {'npList': npList})
+
+def ListDetailView(request, npId):
+    try:
+        nameplate = NamePlate.objects.get(pk=npId)
+    except NamePlate.DoesNotExist:
+        raise Http404("NamePlate Id does not exist")
+    return render(request, 'cowsform/detail.html', {'nameplate': nameplate})

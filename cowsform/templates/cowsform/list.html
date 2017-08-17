@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>BC Incentive Chart</title>
+
+  <style>
+	div.middle {
+		width:500px;
+    	font-family: "Arial";
+	}
+	div.left {
+		width:40%;
+    	text-align:left;
+    	float:left;
+    	padding:5px;
+	}
+	div.right {
+		width:50%;
+    	text-align:left;
+    	float:left;
+    	padding:5px;
+	}
+
+	h1, p {
+		font-family: "Arial";
+	}
+
+	p.error, ul.errorlist li {
+		color:red;
+		font-weight:bold;
+	}
+
+	ul.errorlist li {
+		list-style-type: none;
+		margin-left: -40px;
+		margin-top: -10px;
+		margin-bottom: -10px;
+		font-size: 10px;
+	}
+  </style>
+  <script src="/static/fca_cows.js"></script>
+
+</head>
+
+<body>
+
+<h1>List of Records</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+{% for NamePlate in npList.all %}
+<div class="middle">
+	<li><a href="/cowsform/list/{{NamePlate.id}}">{{ NamePlate.subject_name }}</a></li>
+</div>
+{% endfor %}
+
+</body>
+</html>
