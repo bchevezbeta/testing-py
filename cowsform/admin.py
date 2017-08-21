@@ -3,11 +3,12 @@ from django.contrib import admin
 from .models import NamePlate
 from .models import CarModel
 from .models import CarMake
+from simple_history.admin import SimpleHistoryAdmin
 
 #admin.site.register(CarMake)
 
 # Define the admin class
-class NamePlateAdmin(admin.ModelAdmin):
+class NamePlateAdmin(SimpleHistoryAdmin):
     list_display = ('subject_name', 'business_center', 'car_model', 'car_make', 'car_year')
     list_filter = ('pub_date', 'business_center', 'car_model', 'car_year')
     search_fields = ['subject_name', 'car_model', 'car_make']

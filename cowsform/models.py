@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils import timezone
 from django import forms
+from simple_history.models import HistoricalRecords
+
 
 BC_CHOICES = (
     ('CBC', 'CBC'),
@@ -122,6 +124,7 @@ class NamePlate(models.Model):
     total_cash_allowance = models.CharField(max_length=200, blank=True, verbose_name='Total Cash Allowance')
     tv_program_id = models.CharField(max_length=200, blank=True, verbose_name='Programe ID')
     total_values = models.CharField(max_length=200, blank=True, verbose_name='Total Values')
+    history = HistoricalRecords()
     def __str__(self):
         return self.subject_name
 
