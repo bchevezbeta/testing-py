@@ -23,6 +23,18 @@
     	padding:5px;
 	}
 
+	div.long {
+		width:700px;
+    	font-family: "Arial";
+	}
+
+	div.single {
+		width:20%;
+    	text-align:left;
+    	float:left;
+    	padding:5px;
+	}
+
 	h1, p {
 		font-family: "Arial";
 	}
@@ -234,139 +246,181 @@ var makeByModelActive = {{ carMakeActive }}
 
 
 <div id="co_select" style="display:none;">
-	<div class="middle">
+	<div class="long">
 		<div><b>Cash Offer</b></div>
 	</div>
 
-	<div class="middle">
-		<div class="left">Program ID:</div>
-		<div class="right">
-	    	<input type="text" name="co_program_id" />
+	<div class="long">
+		<div class="single">Customer Cash:</div>
+		<div class="single"><input type="text" name="co_customer_cash" size="15" /></div>
+		<div class="single">Program ID:</div>
+		<div class="single">
+	    	<input type="text" name="co_customer_cash_program_id" size="15" />
 		</div>
 	</div>
 
-	<div class="middle">
-		<div class="left">Customer Cash:</div>
-		<div class="right"><input type="text" name="co_customer_cash" /></div>
-		<div class="left">BC Bonus Cash:</div>
-		<div class="right"><input type="text" name="co_bc_bonus_cash" /></div>
-		<div class="left">Auto Show Bonus Cash:</div>
-		<div class="right"><input type="text" name="co_auto_show_bonus_cash" /></div>
+	<div class="long">
+		<div class="single">BC Bonus Cash:</div>
+		<div class="single"><input type="text" name="co_bc_bonus_cash" size="15" /></div>
+		<div class="single">Program ID:</div>
+		<div class="single">
+	    	<input type="text" name="co_bc_bonus_cash_program_id" size="15" />
+		</div>
+	</div>
+
+	<div class="long">
+		<div class="single">Auto Show Bonus Cash:</div>
+		<div class="single"><input type="text" name="co_auto_show_bonus_cash" size="15" /></div>
+		<div class="single">Program ID:</div>
+		<div class="single">
+	    	<input type="text" name="co_auto_show_bonus_cash_program_id" size="15" />
+		</div>
 	</div>
 </div>
 
 <div id="fo_select" style="display:none;">
-	<div class="middle">
+	<div class="long">
 		<div><b>Finance Offer</b></div>
 	</div>
 
-	<div class="middle">
-		<div class="left">Program ID:</div>
-		<div class="right">
-	    	<input type="text" name="fo_program_id" />
+	<div class="long">
+		<div class="single">APR and Term:</div>
+		<div class="single"><input type="text" name="fo_apr_and_term" size="15" /></div>
+		<div class="single">Program ID:</div>
+		<div class="single">
+	    	<input type="text" name="fo_apr_and_term_program_id" size="15" />
 		</div>
 	</div>
 
-	<div class="middle">
-		<div class="left">APR and Term:</div>
-		<div class="right"><input type="text" name="fo_apr_and_term" /></div>
-		<div class="left">BC Bonus Cash:</div>
-		<div class="right"><input type="text" name="fo_bc_bonus_cash" /></div>
-		<div class="left">Auto Show Bonus Cash:</div>
-		<div class="right"><input type="text" name="fo_auto_show_bonus_cash" /></div>
+	<div class="long">
+		<div class="single">BC Bonus Cash:</div>
+		<div class="single"><input type="text" name="fo_bc_bonus_cash" size="15" /></div>
+		<div class="single">Program ID:</div>
+		<div class="single">
+	    	<input type="text" name="fo_bc_bonus_cash_program_id" size="15" />
+		</div>
+	</div>
+
+	<div class="long">
+		<div class="single">Auto Show Bonus Cash:</div>
+		<div class="single"><input type="text" name="fo_auto_show_bonus_cash" size="15" /></div>
+		<div class="single">Program ID:</div>
+		<div class="single">
+	    	<input type="text" name="fo_auto_show_bonus_cash_program_id" size="15" />
+		</div>
 	</div>
 </div>
 
 <div id="ccfo_select" style="display:none;">
-	<div class="middle">
+	<div class="long">
 		<div><b>Combo "Cash or Finance" Offer</b></div>
 	</div>
 
-	<div class="middle">
-		<div class="left">Program ID:</div>
-		<div class="right">
-	    	<input type="text" name="ccfo_program_id" />
+	<div class="long">
+		<div class="single">Customer Cash:</div>
+		<div class="single"><input type="text" name="ccfo_customer_cash" size="15"/></div>
+		<div class="single">Program ID:</div>
+		<div class="single">
+	    	<input type="text" name="ccfo_customer_cash_program_id" size="15" />
 		</div>
 	</div>
 
-	<div class="middle">
-		<div class="left">Customer Cash:</div>
-		<div class="right"><input type="text" name="ccfo_customer_cash" /></div>
-		<div class="left">BC Bonus Cash:</div>
-		<div class="right"><input type="text" name="ccfo_cc_bc_bonus_cash"/ ></div>
+	<div class="long">
+		<div class="single">BC Bonus Cash:</div>
+		<div class="single"><input type="text" name="ccfo_cc_bc_bonus_cash" size="15" /></div>
+		<div class="single">Program ID:</div>
+		<div class="single">
+	    	<input type="text" name="ccfo_cc_bc_bonus_cash_program_id" size="15" />
+		</div>
 	</div>
 
 	<div style="clear:both;"></div>
 
-	<div class="middle">
+	<div class="long">
 		<b>OR</b>
 	</div>
 
 	<div style="clear:both;"></div>
 
-	<div class="middle">
-		<div class="left">APR and Term:</div>
-		<div class="right"><input type="text" name="ccfo_apr_and_term" /></div>
-		<div class="left">BC Bonus Cash:</div>
-		<div class="right"><input type="text" name="ccfo_aat_bc_bonus_cash" /></div>
+	<div class="long">
+		<div class="single">APR and Term:</div>
+		<div class="single"><input type="text" name="ccfo_apr_and_term" size="15" /></div>
+		<div class="single">Program ID:</div>
+		<div class="single">
+	    	<input type="text" name="ccfo_apr_and_term_program_id" size="15" />
+		</div>
+	</div>
+
+	<div class="long">
+		<div class="single">BC Bonus Cash:</div>
+		<div class="single"><input type="text" name="ccfo_aat_bc_bonus_cash" /></div>
+		<div class="single">Program ID:</div>
+		<div class="single">
+	    	<input type="text" name="ccfo_aat_bc_bonus_cash_program_id" size="15" />
+		</div>
 	</div>
 </div>
 
 <div id="lo_select" style="display:none;">
-	<div class="middle">
+	<div class="long">
 		<div><b>Lease Offer</b></div>
 	</div>
 
-	<div class="middle">
-		<div class="left">Program ID:</div>
-		<div class="right">
-	    	<input type="text" name="lo_program_id" />
+	<div class="long">
+		<div class="single">Lease Payment:</div>
+		<div class="single"><input type="text" name="lo_lease_payment" size="15" /></div>
+		<div class="single">Program ID:</div>
+		<div class="single">
+	    	<input type="text" name="lo_lease_payment_program_id" size="15" />
 		</div>
 	</div>
 
-	<div class="middle">
-		<div class="left">Lease Payment:</div>
-		<div class="right"><input type="text" name="lo_lease_payment" /></div>
-		<div class="left">Term:</div>
-		<div class="right"><input type="text" name="lo_term" /></div>
-		<div class="left">Due at Signing:</div>
-		<div class="right"><input type="text" name="lo_due_at_signing" /></div>
+	<div class="long">
+		<div class="single">Term:</div>
+		<div class="single"><input type="text" name="lo_term" size="15" /></div>
+		<div class="single">Program ID:</div>
+		<div class="single">
+	    	<input type="text" name="lo_term_program_id" size="15" />
+		</div>
+	</div>
+
+	<div class="long">
+		<div class="single">Due at Signing:</div>
+		<div class="single"><input type="text" name="lo_due_at_signing" size="15" /></div>
+		<div class="single">Program ID:</div>
+		<div class="single">
+	    	<input type="text" name="lo_due_at_signing_program_id" size="15" />
+		</div>
 	</div>
 </div>
 
 <div id="tca_select" style="display:none;">
-	<div class="middle">
+	<div class="long">
 		<div><b>Total Cash Allowance-Offer must match Offer Details Section</b></div>
 	</div>
 
-	<div class="middle">
-		<div class="left">Program ID:</div>
-		<div class="right">
-	    	<input type="text" name="tca_program_id" />
+	<div class="long">
+		<div class="single">Total Cash Allowance:</div>
+		<div class="single"><input type="text" name="total_cash_allowance" size="15" /></div>
+		<div class="single">Program ID:</div>
+		<div class="single">
+	    	<input type="text" name="tca_program_id" size="15" />
 		</div>
-	</div>
-
-	<div class="middle">
-		<div class="left">Total Cash Allowance:</div>
-		<div class="right"><input type="text" name="total_cash_allowance" /></div>
 	</div>
 </div>
 
 <div id="tv_select" style="display:none;">
-	<div class="middle">
+	<div class="long">
 		<div><b>Total Values-Offer must match Offer Details Section</b></div>
 	</div>
 
-	<div class="middle">
-		<div class="left">Program ID:</div>
-		<div class="right">
-	    	<input type="text" name="tv_program_id" />
-		</div>
-	</div>
-
-	<div class="middle">
-		<div class="left">Total Values:</div>
-		<div class="right"><input type="text" name="total_values" /></div>
+	<div class="long">
+		<div class="single">Total Values:</div>
+		<div class="single"><input type="text" name="total_values" size="15" /></div>
+		<div class="single">Program ID:</div>
+		<div class="single">
+	    	<input type="text" name="tv_program_id" size="15" />
+	    </div>
 	</div>
 </div>
 

@@ -25,16 +25,16 @@ class NamePlateAdmin(SimpleHistoryAdmin):
             'fields': ('car_model','car_make', 'car_year', 'car_trim', 'box_size', 'wheel_base')
         }),
         ('Cash Offer', {
-            'fields': ('co_program_id', 'co_customer_cash', 'co_bc_bonus_cash', 'co_auto_show_bonus_cash')
+            'fields': ('co_customer_cash', 'co_customer_cash_program_id', 'co_bc_bonus_cash', 'co_bc_bonus_cash_program_id', 'co_auto_show_bonus_cash', 'co_auto_show_bonus_cash_program_id')
         }),
         ('Finance Offer', {
-            'fields': ('fo_program_id', 'fo_apr_and_term', 'fo_bc_bonus_cash', 'fo_auto_show_bonus_cash')
+            'fields': ('fo_apr_and_term', 'fo_apr_and_term_program_id', 'fo_bc_bonus_cash', 'fo_bc_bonus_cash_program_id', 'fo_auto_show_bonus_cash', 'fo_auto_show_bonus_cash_program_id')
         }),
         ('Combo Cash or Finance Offer', {
-            'fields': ('ccfo_program_id', 'ccfo_customer_cash', 'ccfo_cc_bc_bonus_cash', 'ccfo_apr_and_term', 'ccfo_aat_bc_bonus_cash')
+            'fields': ('ccfo_customer_cash', 'ccfo_customer_cash_program_id', 'ccfo_cc_bc_bonus_cash', 'ccfo_cc_bc_bonus_cash_program_id', 'ccfo_apr_and_term', 'ccfo_apr_and_term_program_id', 'ccfo_aat_bc_bonus_cash', 'ccfo_aat_bc_bonus_cash_program_id')
         }),
         ('Lease Offer', {
-            'fields': ('lo_program_id', 'lo_lease_payment','lo_term', 'lo_due_at_signing')
+            'fields': ('lo_lease_payment', 'lo_lease_payment_program_id', 'lo_term', 'lo_term_program_id', 'lo_due_at_signing', 'lo_due_at_signing_program_id')
         }),
         ('Total Cash Allowance Offer', {
             'fields': ('tca_program_id', 'total_cash_allowance')

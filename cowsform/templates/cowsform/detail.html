@@ -7,23 +7,49 @@
 
   <style>
 	div.middle {
-		width:600px;
+		width:500px;
     	font-family: "Arial";
 	}
 	div.left {
-		width:30%;
+		width:40%;
     	text-align:left;
     	float:left;
     	padding:5px;
 	}
 	div.right {
-		width:65%;
+		width:50%;
     	text-align:left;
     	float:left;
     	padding:5px;
 	}
+
+	div.long {
+		width:700px;
+    	font-family: "Arial";
+	}
+
+	div.single {
+		width:20%;
+    	text-align:left;
+    	float:left;
+    	padding:5px;
+	}
+
 	h1, p {
 		font-family: "Arial";
+	}
+
+	p.error, ul.errorlist li {
+		color:red;
+		font-weight:bold;
+	}
+
+	ul.errorlist li {
+		list-style-type: none;
+		margin-left: -40px;
+		margin-top: -10px;
+		margin-bottom: -10px;
+		font-size: 10px;
 	}
   </style>
 
@@ -132,101 +158,135 @@
 </div>
 {% endif %}
 
-{% if nameplate.co_program_id and nameplate.co_customer_cash and nameplate.co_bc_bonus_cash and nameplate.co_auto_show_bonus_cash %}
-<div class="middle">
-	<div><b>Cash Offer</b></div>
-</div>
+<div style="clear:both; padding:10px;"></div>
 
-<div class="middle">
-	<div class="left">Program ID:</div>
-	<div class="right">
-    	{{ nameplate.co_program_id }}
+{% if nameplate.co_customer_cash_program_id and nameplate.co_customer_cash and nameplate.co_bc_bonus_cash_program_id and nameplate.co_bc_bonus_cash and nameplate.co_auto_show_bonus_cash and nameplate.co_auto_show_bonus_cash_program_id %}
+<div>
+	<div class="long">
+		<div><b>Cash Offer</b></div>
 	</div>
-</div>
 
-<div class="middle">
-	<div class="left">Customer Cash:</div>
-	<div class="right">{{ nameplate.co_customer_cash }}</div>
-	<div class="left">BC Bonus Cash:</div>
-	<div class="right">{{ nameplate.co_bc_bonus_cash }}</div>
-	<div class="left">Auto Show Bonus Cash:</div>
-	<div class="right">{{ nameplate.co_auto_show_bonus_cash }}</div>
-</div>
-{% endif %}
-
-{% if nameplate.fo_program_id and nameplate.fo_apr_and_term and nameplate.fo_bc_bonus_cash and nameplate.fo_auto_show_bonus_cash %}
-<div class="middle">
-	<div><b>Finance Offer</b></div>
-</div>
-
-<div class="middle">
-	<div class="left">Program ID:</div>
-	<div class="right">
-    	{{ nameplate.fo_program_id }}
+	<div class="long">
+		<div class="single">Customer Cash:</div>
+		<div class="single">{{ nameplate.co_customer_cash }}</div>
+		<div class="single">Program ID:</div>
+		<div class="single">{{ nameplate.co_customer_cash_program_id }}</div>
 	</div>
-</div>
 
-<div class="middle">
-	<div class="left">APR and Term:</div>
-	<div class="right">{{ nameplate.fo_apr_and_term }}</div>
-	<div class="left">BC Bonus Cash:</div>
-	<div class="right">{{ nameplate.fo_bc_bonus_cash }}</div>
-	<div class="left">Auto Show Bonus Cash:</div>
-	<div class="right">{{ nameplate.fo_auto_show_bonus_cash }}</div>
-</div>
-{% endif %}
+	<div class="long">
+		<div class="single">BC Bonus Cash:</div>
+		<div class="single">{{ nameplate.co_bc_bonus_cash }}</div>
+		<div class="single">Program ID:</div>
+		<div class="single">{{ nameplate.co_bc_bonus_cash_program_id }}</div>
+	</div>
 
-{% if nameplate.ccfo_program_id %}
-<div class="middle">
-	<div><b>Combo "Cash or Finance" Offer</b></div>
-</div>
-
-<div class="middle">
-	<div class="left">Program ID:</div>
-	<div class="right">
-    	{{ nameplate.ccfo_program_id }}
+	<div class="long">
+		<div class="single">Auto Show Bonus Cash:</div>
+		<div class="single">{{ nameplate.co_auto_show_bonus_cash }}</div>
+		<div class="single">Program ID:</div>
+		<div class="single">{{ nameplate.co_auto_show_bonus_cash_program_id }}</div>
 	</div>
 </div>
 {% endif %}
 
-{% if nameplate.ccfo_customer_cash and nameplate.ccfo_cc_bc_bonus_cash %}
-<div class="middle">
-	<div class="left">Customer Cash:</div>
-	<div class="right">{{ nameplate.ccfo_customer_cash }}</div>
-	<div class="left">BC Bonus Cash:</div>
-	<div class="right">{{ nameplate.ccfo_cc_bc_bonus_cash }}</div>
-</div>
-{% endif %}
+{% if nameplate.fo_apr_and_term_program_id and nameplate.fo_apr_and_term and nameplate.fo_bc_bonus_cash and nameplate.fo_bc_bonus_cash_program_id and nameplate.fo_auto_show_bonus_cash and nameplate.fo_auto_show_bonus_cash_program_id %}
+<div>
+	<div class="long">
+		<div><b>Finance Offer</b></div>
+	</div>
 
-{% if nameplate.ccfo_apr_and_term and nameplate.ccfo_aat_bc_bonus_cash %}
-<div class="middle">
-	<div class="left">APR and Term:</div>
-	<div class="right">{{ nameplate.ccfo_apr_and_term }}</div>
-	<div class="left">BC Bonus Cash:</div>
-	<div class="right">{{ nameplate.ccfo_aat_bc_bonus_cash }}</div>
-</div>
-{% endif %}
+	<div class="long">
+		<div class="single">APR and Term:</div>
+		<div class="single">{{ nameplate.fo_apr_and_term }}</div>
+		<div class="single">Program ID:</div>
+		<div class="single">{{ nameplate.fo_apr_and_term_program_id }}</div>
+	</div>
 
-{% if nameplate.lo_program_id and nameplate.lo_lease_payment and nameplate.lo_term and nameplate.lo_due_at_signing %}
-<div class="middle">
-	<div><b>Lease Offer</b></div>
-</div>
+	<div class="long">
+		<div class="single">BC Bonus Cash:</div>
+		<div class="single">{{ nameplate.fo_bc_bonus_cash }}</div>
+		<div class="single">Program ID:</div>
+		<div class="single">{{ nameplate.fo_bc_bonus_cash_program_id }}</div>
+	</div>
 
-<div class="middle">
-	<div class="left">Program ID:</div>
-	<div class="right">
-    	{{ nameplate.lo_program_id }}
+	<div class="long">
+		<div class="single">Auto Show Bonus Cash:</div>
+		<div class="single">{{ nameplate.fo_auto_show_bonus_cash }}</div>
+		<div class="single">Program ID:</div>
+		<div class="single">{{ nameplate.fo_auto_show_bonus_cash_program_id }}</div>
 	</div>
 </div>
+{% endif %}
 
-<div class="middle">
-	<div class="left">Lease Payment:</div>
-	<div class="right">{{ nameplate.lo_lease_payment }}</div>
-	<div class="left">Term:</div>
-	<div class="right">{{ nameplate.lo_term }}</div>
-	<div class="left">Due at Signing:</div>
-	<div class="right">{{ nameplate.lo_due_at_signing }}</div>
+{% if nameplate.ccfo_customer_cash_program_id and nameplate.ccfo_customer_cash and nameplate.ccfo_cc_bc_bonus_cash_program_id and nameplate.ccfo_cc_bc_bonus_cash and nameplate.ccfo_apr_and_term_program_id and nameplate.ccfo_apr_and_term and nameplate.ccfo_aat_bc_bonus_cash_program_id and nameplate.ccfo_aat_bc_bonus_cash %}
+<div>
+	<div class="long">
+		<div><b>Combo "Cash or Finance" Offer</b></div>
+	</div>
+
+	<div class="long">
+		<div class="single">Customer Cash:</div>
+		<div class="single">{{ nameplate.ccfo_customer_cash }}</div>
+		<div class="single">Program ID:</div>
+		<div class="single">{{ nameplate.ccfo_customer_cash_program_id }}</div>
+	</div>
+
+	<div class="long">
+		<div class="single">BC Bonus Cash:</div>
+		<div class="single">{{ nameplate.ccfo_cc_bc_bonus_cash }}</div>
+		<div class="single">Program ID:</div>
+		<div class="single">{{ nameplate.ccfo_cc_bc_bonus_cash_program_id }}</div>
+	</div>
+
+	<div style="clear:both;"></div>
+
+	<div class="long">
+		<b>OR</b>
+	</div>
+
+	<div style="clear:both;"></div>
+
+	<div class="long">
+		<div class="single">APR and Term:</div>
+		<div class="single">{{ nameplate.ccfo_apr_and_term }}</div>
+		<div class="single">Program ID:</div>
+		<div class="single">{{ nameplate.ccfo_apr_and_term_program_id }}</div>
+	</div>
+
+	<div class="long">
+		<div class="single">BC Bonus Cash:</div>
+		<div class="single">{{ nameplate.ccfo_aat_bc_bonus_cash }}</div>
+		<div class="single">Program ID:</div>
+		<div class="single">{{ nameplate.ccfo_aat_bc_bonus_cash_program_id }}</div>
+	</div>
 </div>
+{% endif %}
+
+{% if nameplate.lo_lease_payment_program_id and nameplate.lo_lease_payment and nameplate.lo_term and nameplate.lo_term_program_id and nameplate.lo_due_at_signing and nameplate.lo_due_at_signing_program_id %}
+	<div class="long">
+		<div><b>Lease Offer</b></div>
+	</div>
+
+	<div class="long">
+		<div class="single">Lease Payment:</div>
+		<div class="single">{{ nameplate.lo_lease_payment }}</div>
+		<div class="single">Program ID:</div>
+		<div class="single">{{ nameplate.lo_lease_payment_program_id }}</div>
+	</div>
+
+	<div class="long">
+		<div class="single">Term:</div>
+		<div class="single">{{ nameplate.lo_term }}</div>
+		<div class="single">Program ID:</div>
+		<div class="single">{{ nameplate.lo_term_program_id }}</div>
+	</div>
+
+	<div class="long">
+		<div class="single">Due at Signing:</div>
+		<div class="single">{{ nameplate.lo_due_at_signing }}</div>
+		<div class="single">Program ID:</div>
+		<div class="single">{{ nameplate.lo_due_at_signing_program_id }}</div>
+	</div>
 {% endif %}
 
 {% if nameplate.tca_program_id and nameplate.total_cash_allowance %}

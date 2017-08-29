@@ -55,22 +55,31 @@ def index(request):
                 NamePlateInst.car_trim = form.cleaned_data['car_trim']
                 NamePlateInst.box_size = form.cleaned_data['box_size']
                 NamePlateInst.wheel_base = form.cleaned_data['wheel_base']
-                NamePlateInst.co_program_id = form.cleaned_data['co_program_id']
+                NamePlateInst.co_customer_cash_program_id = form.cleaned_data['co_customer_cash_program_id']
                 NamePlateInst.co_customer_cash = form.cleaned_data['co_customer_cash']
+                NamePlateInst.co_bc_bonus_cash_program_id = form.cleaned_data['co_bc_bonus_cash_program_id']
                 NamePlateInst.co_bc_bonus_cash = form.cleaned_data['co_bc_bonus_cash']
+                NamePlateInst.co_auto_show_bonus_cash_program_id = form.cleaned_data['co_auto_show_bonus_cash_program_id']
                 NamePlateInst.co_auto_show_bonus_cash = form.cleaned_data['co_auto_show_bonus_cash']
-                NamePlateInst.fo_program_id = form.cleaned_data['fo_program_id']
+                NamePlateInst.fo_apr_and_term_program_id = form.cleaned_data['fo_apr_and_term_program_id']
                 NamePlateInst.fo_apr_and_term = form.cleaned_data['fo_apr_and_term']
+                NamePlateInst.fo_bc_bonus_cash_program_id = form.cleaned_data['fo_bc_bonus_cash_program_id']
                 NamePlateInst.fo_bc_bonus_cash = form.cleaned_data['fo_bc_bonus_cash']
+                NamePlateInst.fo_auto_show_bonus_cash_program_id = form.cleaned_data['fo_auto_show_bonus_cash_program_id']
                 NamePlateInst.fo_auto_show_bonus_cash = form.cleaned_data['fo_auto_show_bonus_cash']
-                NamePlateInst.ccfo_program_id = form.cleaned_data['ccfo_program_id']
+                NamePlateInst.ccfo_customer_cash_program_id = form.cleaned_data['ccfo_customer_cash_program_id']
                 NamePlateInst.ccfo_customer_cash = form.cleaned_data['ccfo_customer_cash']
+                NamePlateInst.ccfo_cc_bc_bonus_cash_program_id = form.cleaned_data['ccfo_cc_bc_bonus_cash_program_id']
                 NamePlateInst.ccfo_cc_bc_bonus_cash = form.cleaned_data['ccfo_cc_bc_bonus_cash']
+                NamePlateInst.ccfo_apr_and_term_program_id = form.cleaned_data['ccfo_apr_and_term_program_id']
                 NamePlateInst.ccfo_apr_and_term = form.cleaned_data['ccfo_apr_and_term']
+                NamePlateInst.ccfo_aat_bc_bonus_cash_program_id = form.cleaned_data['ccfo_aat_bc_bonus_cash_program_id']
                 NamePlateInst.ccfo_aat_bc_bonus_cash = form.cleaned_data['ccfo_aat_bc_bonus_cash']
-                NamePlateInst.lo_program_id = form.cleaned_data['lo_program_id']
+                NamePlateInst.lo_lease_payment_program_id = form.cleaned_data['lo_lease_payment_program_id']
                 NamePlateInst.lo_lease_payment = form.cleaned_data['lo_lease_payment']
+                NamePlateInst.lo_term_program_id = form.cleaned_data['lo_term_program_id']
                 NamePlateInst.lo_term = form.cleaned_data['lo_term']
+                NamePlateInst.lo_due_at_signing_program_id = form.cleaned_data['lo_due_at_signing_program_id']
                 NamePlateInst.lo_due_at_signing = form.cleaned_data['lo_due_at_signing']
                 NamePlateInst.tcv_program_id = form.cleaned_data['tca_program_id']
                 NamePlateInst.total_cash_allowance = form.cleaned_data['total_cash_allowance']
@@ -95,7 +104,6 @@ def index(request):
 
 
             # redirect to a new URL:
-            print NamePlateInst.id
             return render(request, 'cowsform/thanks.html', {'form': form, 'npi': NamePlateInst})
 
         else:

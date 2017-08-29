@@ -7,23 +7,49 @@
 
   <style>
 	div.middle {
-		width:600px;
+		width:500px;
     	font-family: "Arial";
 	}
 	div.left {
-		width:30%;
+		width:40%;
     	text-align:left;
     	float:left;
     	padding:5px;
 	}
 	div.right {
-		width:65%;
+		width:50%;
     	text-align:left;
     	float:left;
     	padding:5px;
 	}
+
+	div.long {
+		width:700px;
+    	font-family: "Arial";
+	}
+
+	div.single {
+		width:20%;
+    	text-align:left;
+    	float:left;
+    	padding:5px;
+	}
+
 	h1, p {
 		font-family: "Arial";
+	}
+
+	p.error, ul.errorlist li {
+		color:red;
+		font-weight:bold;
+	}
+
+	ul.errorlist li {
+		list-style-type: none;
+		margin-left: -40px;
+		margin-top: -10px;
+		margin-bottom: -10px;
+		font-size: 10px;
 	}
   </style>
 
@@ -36,7 +62,7 @@
 <h1>New record created</h1>
 
 <div class="middle">
-	<a href="/cowsform/list/{{npi.id}}/">Review record</a>
+	<a href="/cowsform/list/{{npi.id}}">Review record</a>
 </div>
 
 <div style="clear:both; padding:10px;"></div>
@@ -139,101 +165,135 @@
 </div>
 {% endif %}
 
-{% if form.co_program_id.value and form.co_customer_cash.value and form.co_bc_bonus_cash.value and form.co_auto_show_bonus_cash.value %}
-<div class="middle">
-	<div><b>Cash Offer</b></div>
-</div>
+<div style="clear:both; padding:10px;"></div>
 
-<div class="middle">
-	<div class="left">Program ID:</div>
-	<div class="right">
-    	{{ form.co_program_id.value }}
+{% if form.co_customer_cash_program_id.value and form.co_customer_cash.value and form.co_bc_bonus_cash_program_id.value and form.co_bc_bonus_cash.value and form.co_auto_show_bonus_cash.value and form.co_auto_show_bonus_cash_program_id.value %}
+<div>
+	<div class="long">
+		<div><b>Cash Offer</b></div>
 	</div>
-</div>
 
-<div class="middle">
-	<div class="left">Customer Cash:</div>
-	<div class="right">{{ form.co_customer_cash.value }}</div>
-	<div class="left">BC Bonus Cash:</div>
-	<div class="right">{{ form.co_bc_bonus_cash.value }}</div>
-	<div class="left">Auto Show Bonus Cash:</div>
-	<div class="right">{{ form.co_auto_show_bonus_cash.value }}</div>
-</div>
-{% endif %}
-
-{% if form.fo_program_id.value and form.fo_apr_and_term.value and form.fo_bc_bonus_cash.value and form.fo_auto_show_bonus_cash.value %}
-<div class="middle">
-	<div><b>Finance Offer</b></div>
-</div>
-
-<div class="middle">
-	<div class="left">Program ID:</div>
-	<div class="right">
-    	{{ form.fo_program_id.value }}
+	<div class="long">
+		<div class="single">Customer Cash:</div>
+		<div class="single">{{ form.co_customer_cash.value }}</div>
+		<div class="single">Program ID:</div>
+		<div class="single">{{ form.co_customer_cash_program_id.value }}</div>
 	</div>
-</div>
 
-<div class="middle">
-	<div class="left">APR and Term:</div>
-	<div class="right">{{ form.fo_apr_and_term.value }}</div>
-	<div class="left">BC Bonus Cash:</div>
-	<div class="right">{{ form.fo_bc_bonus_cash.value }}</div>
-	<div class="left">Auto Show Bonus Cash:</div>
-	<div class="right">{{ form.fo_auto_show_bonus_cash.value }}</div>
-</div>
-{% endif %}
+	<div class="long">
+		<div class="single">BC Bonus Cash:</div>
+		<div class="single">{{ form.co_bc_bonus_cash.value }}</div>
+		<div class="single">Program ID:</div>
+		<div class="single">{{ form.co_bc_bonus_cash_program_id.value }}</div>
+	</div>
 
-{% if form.ccfo_program_id.value %}
-<div class="middle">
-	<div><b>Combo "Cash or Finance" Offer</b></div>
-</div>
-
-<div class="middle">
-	<div class="left">Program ID:</div>
-	<div class="right">
-    	{{ form.ccfo_program_id.value }}
+	<div class="long">
+		<div class="single">Auto Show Bonus Cash:</div>
+		<div class="single">{{ form.co_auto_show_bonus_cash.value }}</div>
+		<div class="single">Program ID:</div>
+		<div class="single">{{ form.co_auto_show_bonus_cash_program_id.value }}</div>
 	</div>
 </div>
 {% endif %}
 
-{% if form.ccfo_customer_cash.value and form.ccfo_cc_bc_bonus_cash.value %}
-<div class="middle">
-	<div class="left">Customer Cash:</div>
-	<div class="right">{{ form.ccfo_customer_cash.value }}</div>
-	<div class="left">BC Bonus Cash:</div>
-	<div class="right">{{ form.ccfo_cc_bc_bonus_cash.value }}</div>
-</div>
-{% endif %}
+{% if form.fo_apr_and_term_program_id.value and form.fo_apr_and_term.value and form.fo_bc_bonus_cash.value and form.fo_bc_bonus_cash_program_id.value and form.fo_auto_show_bonus_cash.value and form.fo_auto_show_bonus_cash_program_id.value %}
+<div>
+	<div class="long">
+		<div><b>Finance Offer</b></div>
+	</div>
 
-{% if form.ccfo_apr_and_term.value and form.ccfo_aat_bc_bonus_cash.value %}
-<div class="middle">
-	<div class="left">APR and Term:</div>
-	<div class="right">{{ form.ccfo_apr_and_term.value }}</div>
-	<div class="left">BC Bonus Cash:</div>
-	<div class="right">{{ form.ccfo_aat_bc_bonus_cash.value }}</div>
-</div>
-{% endif %}
+	<div class="long">
+		<div class="single">APR and Term:</div>
+		<div class="single">{{ form.fo_apr_and_term.value }}</div>
+		<div class="single">Program ID:</div>
+		<div class="single">{{ form.fo_apr_and_term_program_id.value }}</div>
+	</div>
 
-{% if form.lo_program_id.value and form.lo_lease_payment.value and form.lo_term.value and form.lo_due_at_signing.value %}
-<div class="middle">
-	<div><b>Lease Offer</b></div>
-</div>
+	<div class="long">
+		<div class="single">BC Bonus Cash:</div>
+		<div class="single">{{ form.fo_bc_bonus_cash.value }}</div>
+		<div class="single">Program ID:</div>
+		<div class="single">{{ form.fo_bc_bonus_cash_program_id.value }}</div>
+	</div>
 
-<div class="middle">
-	<div class="left">Program ID:</div>
-	<div class="right">
-    	{{ form.lo_program_id.value }}
+	<div class="long">
+		<div class="single">Auto Show Bonus Cash:</div>
+		<div class="single">{{ form.fo_auto_show_bonus_cash.value }}</div>
+		<div class="single">Program ID:</div>
+		<div class="single">{{ form.fo_auto_show_bonus_cash_program_id.value }}</div>
 	</div>
 </div>
+{% endif %}
 
-<div class="middle">
-	<div class="left">Lease Payment:</div>
-	<div class="right">{{ form.lo_lease_payment.value }}</div>
-	<div class="left">Term:</div>
-	<div class="right">{{ form.lo_term.value }}</div>
-	<div class="left">Due at Signing:</div>
-	<div class="right">{{ form.lo_due_at_signing.value }}</div>
+{% if form.ccfo_customer_cash_program_id.value and form.ccfo_customer_cash.value and form.ccfo_cc_bc_bonus_cash_program_id.value and form.ccfo_cc_bc_bonus_cash.value and form.ccfo_apr_and_term_program_id.value and form.ccfo_apr_and_term.value and form.ccfo_aat_bc_bonus_cash_program_id.value and form.ccfo_aat_bc_bonus_cash.value %}
+<div>
+	<div class="long">
+		<div><b>Combo "Cash or Finance" Offer</b></div>
+	</div>
+
+	<div class="long">
+		<div class="single">Customer Cash:</div>
+		<div class="single">{{ form.ccfo_customer_cash.value }}</div>
+		<div class="single">Program ID:</div>
+		<div class="single">{{ form.ccfo_customer_cash_program_id.value }}</div>
+	</div>
+
+	<div class="long">
+		<div class="single">BC Bonus Cash:</div>
+		<div class="single">{{ form.ccfo_cc_bc_bonus_cash.value }}</div>
+		<div class="single">Program ID:</div>
+		<div class="single">{{ form.ccfo_cc_bc_bonus_cash_program_id.value }}</div>
+	</div>
+
+	<div style="clear:both;"></div>
+
+	<div class="long">
+		<b>OR</b>
+	</div>
+
+	<div style="clear:both;"></div>
+
+	<div class="long">
+		<div class="single">APR and Term:</div>
+		<div class="single">{{ form.ccfo_apr_and_term.value }}</div>
+		<div class="single">Program ID:</div>
+		<div class="single">{{ form.ccfo_apr_and_term_program_id.value }}</div>
+	</div>
+
+	<div class="long">
+		<div class="single">BC Bonus Cash:</div>
+		<div class="single">{{ form.ccfo_aat_bc_bonus_cash.value }}</div>
+		<div class="single">Program ID:</div>
+		<div class="single">{{ form.ccfo_aat_bc_bonus_cash_program_id.value }}</div>
+	</div>
 </div>
+{% endif %}
+
+{% if form.lo_lease_payment_program_id.value and form.lo_lease_payment.value and form.lo_term.value and form.lo_term_program_id.value and form.lo_due_at_signing.value and form.lo_due_at_signing_program_id.value %}
+	<div class="long">
+		<div><b>Lease Offer</b></div>
+	</div>
+
+	<div class="long">
+		<div class="single">Lease Payment:</div>
+		<div class="single">{{ form.lo_lease_payment.value }}</div>
+		<div class="single">Program ID:</div>
+		<div class="single">{{ form.lo_lease_payment_program_id.value }}</div>
+	</div>
+
+	<div class="long">
+		<div class="single">Term:</div>
+		<div class="single">{{ form.lo_term.value }}</div>
+		<div class="single">Program ID:</div>
+		<div class="single">{{ form.lo_term_program_id.value }}</div>
+	</div>
+
+	<div class="long">
+		<div class="single">Due at Signing:</div>
+		<div class="single">{{ form.lo_due_at_signing.value }}</div>
+		<div class="single">Program ID:</div>
+		<div class="single">{{ form.lo_due_at_signing_program_id.value }}</div>
+	</div>
 {% endif %}
 
 {% if form.tca_program_id.value and form.total_cash_allowance.value %}
