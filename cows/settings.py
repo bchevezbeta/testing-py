@@ -42,8 +42,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'cowsform.apps.CowsformConfig',
-    'mod_wsgi.server',
+    #'mod_wsgi.server',
     'simple_history',
+    'rest_framework',
+    'api',
 ]
 
 MIDDLEWARE_CLASSES = [

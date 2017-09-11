@@ -5,6 +5,9 @@ from django.core.mail import send_mail
 from django.urls import reverse
 from .models import NamePlate, CarModel, CarMake
 from .forms import NamePlateForm
+from rest_framework import generics
+from .serializers import NamePlateSerializer
+from .models import NamePlate
 import datetime
  
 def index(request):

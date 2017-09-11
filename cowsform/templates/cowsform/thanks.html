@@ -62,7 +62,7 @@
 <h1>New record created</h1>
 
 <div class="middle">
-	<a href="/cowsform/list/{{npi.id}}">Review record</a>
+	<a href="{% url 'cowsform:detail' npi.id %}">Review record</a>
 </div>
 
 <div style="clear:both; padding:10px;"></div>

@@ -62,7 +62,7 @@
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
 <div class="middle">
-	<a href="/cowsform/list/">Return to record list</a>
+	<a href="{% url 'cowsform:list'%}">Return to record list</a>
 </div>
 
 <div style="clear:both; padding:10px;"></div>

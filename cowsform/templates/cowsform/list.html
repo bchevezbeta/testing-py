@@ -52,7 +52,7 @@
 
 {% for NamePlate in npList.all %}
 <div class="middle">
-	<li><a href="/cowsform/list/{{NamePlate.id}}">{{ NamePlate.subject_name }}</a></li>
+	<li><a href="{% url 'cowsform:detail' NamePlate.id %}">{{ NamePlate.subject_name }}</a></li>
 </div>
 {% endfor %}
 
